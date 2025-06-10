@@ -11,7 +11,6 @@ void main() {
 }
 
 class QuoteList extends StatefulWidget {
-  const QuoteList({super.key});
 
   @override
   State<QuoteList> createState() => _QuoteListState();
@@ -25,10 +24,6 @@ class _QuoteListState extends State<QuoteList> {
     Quote(text: 'Harambe dont touch the kid ', author: 'pewep'),
   ];
 
-  Widget quoteTemplate(quote){
-    return QuoteCard(quote: quote);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +35,14 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: quotes.map((quote) => quoteTemplate(quote)).toList()
+        children: quotes.map((quote) => QuoteCard(
+          quote: quote,
+          delete : () {
+            setState(() {
+              quotes.remove(quote);
+            });
+          }
+          )).toList()
       ),
     );
   }
