@@ -5,7 +5,7 @@ class QuoteCard extends StatelessWidget {
 
   final Quote quote;
   final VoidCallback delete;
-   QuoteCard({  required this.quote, required this.delete });
+   const QuoteCard({super.key,   required this.quote, required this.delete });
 
   @override
   Widget build(BuildContext context) {
